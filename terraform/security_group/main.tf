@@ -1,4 +1,3 @@
-
 resource "aws_security_group" "lb_sg" {
   name        = "lb_sg"
   description = "Allow inbound traffic from the load balancer to the application"
@@ -10,7 +9,6 @@ resource "aws_security_group" "lb_sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
 
   ingress {
     from_port   = 443
