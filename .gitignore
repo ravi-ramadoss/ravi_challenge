@@ -1,1 +1,7 @@
 .terraform/
+.env
+.terraform*
+terraform.tfstat
+terraform.tfstate.backup
+*tfstate*
+.DS_Store
