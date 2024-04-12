@@ -4,6 +4,10 @@ resource "aws_s3_bucket" "lb_logs" {
   bucket = var.lb_logs_bucket_name
   tags   = var.common_tags
 
+}
+resource "aws_s3_bucket_policy" "lb_logs_policy" {
+  bucket = aws_s3_bucket.lb_logs.id
+
   policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -24,24 +28,4 @@ resource "aws_s3_bucket" "lb_logs" {
   ]
 }
 POLICY
-
-
 }
-
-# resource "aws_s3_bucket_policy" "lb_logs_policy" {
-#   bucket = aws_s3_bucket.lb_logs.id
-
-#   policy = jsonencode({
-#     Version = "2012-10-17"
-#     Statement = [
-#       {
-#         Effect = "Allow"
-#         Principal = {
-#           Service = "logdelivery.elasticloadbalancing.amazonaws.com"
-#         }
-#         Action = "s3:PutObject"
-#         Resource = "arn:aws:s3:::${var.lb_logs_bucket_name}/lb_logs/*"
-#       },
-#     ]
-#   })
-# }
