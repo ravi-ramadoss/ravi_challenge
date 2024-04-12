@@ -1,0 +1,38 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Copy the web page content
+      copy:
+        dest: /usr/share/nginx/html/index.html
+        content: |
+          <html>
+          <head>
+          <title>Hello World</title>
+          </head>
+          <body>
+          <h1>Hello World!</h1>
+          </body>
+          </html>
+
+    - name: 
+    #redirect http to https
+      copy:
+        dest: /etc/nginx/conf.d/redirect.conf
+        content: |
+          server {
+              listen 80;
+              server_name _;
+              return 301 https://$host$request_uri;
+          }

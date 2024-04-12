@@ -35,6 +35,7 @@ module "load_balancer" {
   certificate_arn = module.certificate.certificate_arn
   use_blue = var.use_blue
   common_tags = var.common_tags
+  lb_logs_bucket = module.s3.lb_logs_bucket
 }
 
 module "ec2" {
@@ -55,3 +56,12 @@ module "security_group" {
   common_tags = var.common_tags
   
 }
+
+module "s3" {
+  source = "./s3"
+  common_tags = var.common_tags
+  lb_logs_bucket_name = var.lb_logs_bucket_name
+  lb_arn = module.load_balancer.lb_arn
+  account_id = var.account_id
+}
+

@@ -33,3 +33,8 @@ variable "common_tags" {
   type        = map(string)
   default     = {}
 }
+
+variable lb_logs_bucket {
+  description = "The name of the S3 bucket to store LB logs"
+  type        = string
+}

@@ -28,3 +28,15 @@ variable key_name {
   type        = string
   default     = "ravi-ramadoss-oregon"
 }
+
+variable "lb_logs_bucket_name" {
+  description = "The name of the S3 bucket to store LB logs"
+  type        = string
+  default     = "raviramadoss-elb-logs"
+}
+
+variable account_id {
+  description = "The account ID"
+  type        = string
+  default   = "308655275891"
+}

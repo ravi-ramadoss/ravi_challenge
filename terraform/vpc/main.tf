@@ -24,6 +24,7 @@ resource "aws_internet_gateway" "gw" {
   tags = var.common_tags
 }
 
+#comment out the following code to prevent inbound access
 resource "aws_route_table" "internet_access" {
   vpc_id = aws_vpc.comcast_take_home.id
 
