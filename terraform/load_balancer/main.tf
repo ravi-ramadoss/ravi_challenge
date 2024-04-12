@@ -2,7 +2,7 @@
 
 
 resource "aws_lb" "web_lb" {
-  name               = "my-lb"
+  name_prefix       = var.name_prefix
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.security_group_id]

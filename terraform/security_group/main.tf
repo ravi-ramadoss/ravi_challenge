@@ -1,6 +1,6 @@
 #load balances sg to allow http and https
 resource "aws_security_group" "lb_sg" {
-  name        = "lb_sg"
+  name        = "cc-lb_sg"
   description = "Allow inbound traffic from the load balancer to the application"
   vpc_id      = var.vpc_id
 
@@ -29,7 +29,7 @@ resource "aws_security_group" "lb_sg" {
 
 #ec2 security group to allow ssh, http and https
 resource "aws_security_group" "ec2_sg" {
-  name        = "allow inbound access to ec2 servers"
+  name        = "cc-ec2_sg"
   description = "Allow inbound SSH traffic"
   vpc_id      = var.vpc_id
 

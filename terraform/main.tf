@@ -10,6 +10,7 @@ data "aws_route53_zone" "main" {
 module "vpc" {
   source = "./vpc"
   common_tags = var.common_tags
+  name_prefix       = var.name_prefix
 }
 
 module "dns" {
@@ -17,6 +18,7 @@ module "dns" {
   lb_dns_name = module.load_balancer.lb_dns_name
   lb_zone_id = module.load_balancer.lb_zone_id
   common_tags = var.common_tags
+  name_prefix = var.name_prefix
 }
 
 module "certificate" {
@@ -24,6 +26,7 @@ module "certificate" {
   domain_name = var.domain_name
   zone_id = data.aws_route53_zone.main.zone_id
   common_tags = var.common_tags
+  name_prefix       = var.name_prefix
 }
 
 module "load_balancer" {
@@ -36,6 +39,7 @@ module "load_balancer" {
   use_blue = var.use_blue
   common_tags = var.common_tags
   lb_logs_bucket = module.s3.lb_logs_bucket
+  name_prefix = var.name_prefix
 }
 
 module "ec2" {
@@ -49,12 +53,14 @@ module "ec2" {
   subnet_2_id = module.vpc.subnet_2_id
   ec2_security_group_id = module.security_group.ec2_security_group_id
   lb_security_group_id = module.security_group.lb_security_group_id
+  name_prefix = var.name_prefix
 }
 
 module "security_group" {
   source = "./security_group"
   vpc_id = module.vpc.vpc_id
   common_tags = var.common_tags
+  name_prefix       = var.name_prefix
   
 }
 
@@ -64,5 +70,6 @@ module "s3" {
   lb_logs_bucket_name = var.lb_logs_bucket_name
   lb_arn = module.load_balancer.lb_arn
   account_id = var.account_id
+  name_prefix       = var.name_prefix
 }
 

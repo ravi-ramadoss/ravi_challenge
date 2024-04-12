@@ -38,3 +38,8 @@ variable lb_logs_bucket {
   description = "The name of the S3 bucket to store LB logs"
   type        = string
 }
+
+variable name_prefix {
+  description = "The prefix to use for all resource names"
+  type        = string
+}

@@ -17,3 +17,9 @@ variable account_id {
   description = "The account ID"
   type        = string
 }
+
+
+variable name_prefix {
+  description = "The prefix to use for all resource names"
+  type        = string
+}

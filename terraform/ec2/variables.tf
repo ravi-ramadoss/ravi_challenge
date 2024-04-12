@@ -43,3 +43,8 @@ variable lb_security_group_id {
   description = "The ID of the security group"
   type        = string
 }
+
+variable name_prefix {
+  description = "The prefix to use for all resource names"
+  type        = string
+}

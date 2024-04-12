@@ -1,7 +1,7 @@
 
 
 resource "aws_launch_configuration" "blue" {
-  name_prefix   = "blue-lc-"
+  name_prefix       = var.name_prefix
   image_id      = var.ami_id
   instance_type = "t2.micro"
   key_name      = var.key_name
@@ -14,7 +14,7 @@ resource "aws_launch_configuration" "blue" {
 }
 
 resource "aws_launch_configuration" "green" {
-  name_prefix   = "green-lc-"
+  name_prefix       = var.name_prefix
   image_id      = var.ami_id
   instance_type = "t2.micro"
   key_name      = var.key_name
@@ -26,6 +26,7 @@ resource "aws_launch_configuration" "green" {
 }
 
 resource "aws_autoscaling_group" "blue" {
+  name_prefix       = var.name_prefix
   launch_configuration = aws_launch_configuration.blue.id
   min_size             = 1
   max_size             = 1
@@ -35,6 +36,7 @@ resource "aws_autoscaling_group" "blue" {
 }
 
 resource "aws_autoscaling_group" "green" {
+  name_prefix       = var.name_prefix
   launch_configuration = aws_launch_configuration.green.id
   min_size             = 1
   max_size             = 1
