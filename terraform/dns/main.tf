@@ -5,7 +5,7 @@ data "aws_route53_zone" "main" {
 
 resource "aws_route53_record" "www" {
   zone_id = data.aws_route53_zone.main.zone_id
-  name    = "comcast.raviramadoss.me"
+  name    = var.sub_domain_name
   type    = "A"
 
   alias {

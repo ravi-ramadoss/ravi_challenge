@@ -3,10 +3,10 @@ variable "use_blue" {
   type        = bool
   default     = true
 }
-variable "domain_name" {
+variable "sub_domain_name" {
   description = "The domain name for the ACM certificate"
   type        = string
-  default    = "raviramadoss.me"
+  default    = "comcast.raviramadoss.me"
 }
 
 variable "common_tags" {

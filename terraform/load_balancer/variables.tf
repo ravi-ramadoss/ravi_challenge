@@ -18,10 +18,6 @@ variable security_group_id {
   type        = string
 }
 
-variable certificate_arn {
-  description = "The ARN of the ACM certificate"
-  type        = string
-}
 
 variable use_blue {
   description = "Use the blue target group"
@@ -41,5 +37,10 @@ variable lb_logs_bucket {
 
 variable name_prefix {
   description = "The prefix to use for all resource names"
+  type        = string
+}
+
+variable subdomain_certificate_arn {
+  description = "The ARN of the wildcard ACM certificate"
   type        = string
 }

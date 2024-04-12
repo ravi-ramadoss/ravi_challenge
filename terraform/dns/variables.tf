@@ -17,3 +17,8 @@ variable name_prefix {
   description = "The prefix to use for all resource names"
   type        = string
 }
+
+variable sub_domain_name {
+  description = "The subdomain to use for the DNS record"
+  type        = string
+}

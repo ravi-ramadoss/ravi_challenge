@@ -19,11 +19,12 @@ module "dns" {
   lb_zone_id = module.load_balancer.lb_zone_id
   common_tags = var.common_tags
   name_prefix = var.name_prefix
+  sub_domain_name = var.sub_domain_name
 }
 
 module "certificate" {
   source = "./certificate"
-  domain_name = var.domain_name
+  sub_domain_name = var.sub_domain_name
   zone_id = data.aws_route53_zone.main.zone_id
   common_tags = var.common_tags
   name_prefix       = var.name_prefix
@@ -35,11 +36,11 @@ module "load_balancer" {
   subnet_1_id = module.vpc.subnet_1_id
   subnet_2_id = module.vpc.subnet_2_id
   security_group_id = module.security_group.lb_security_group_id
-  certificate_arn = module.certificate.certificate_arn
   use_blue = var.use_blue
   common_tags = var.common_tags
   lb_logs_bucket = module.s3.lb_logs_bucket
   name_prefix = var.name_prefix
+  subdomain_certificate_arn = module.certificate.subdomain_certificate_arn
 }
 
 module "ec2" {
