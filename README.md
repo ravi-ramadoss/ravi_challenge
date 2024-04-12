@@ -1,5 +1,5 @@
 ## Live version can be found here
-[http://comcast.raviramadoss.me](http://comcast.raviramadoss.me) Will redirect to https
+[http://comcast.raviramadoss.me](http://comcast.raviramadoss.me) will redirect to https
 [https://comcast.raviramadoss.me](https://comcast.raviramadoss.me)
 
 # System Architecture README
@@ -79,3 +79,22 @@ This README provides a high-level overview of the system's architecture. For imp
 ## Issues faced
 circular dependency
 https://github.com/hashicorp/terraform-provider-aws/issues/12010
+
+## Answer for code challenge
+```
+import re
+
+
+def is_valid_credit_card_no(credit_card_no):
+    pattern = r"^[456]\d{3}(-?\d{4}){3}$"
+    if re.match(pattern, credit_card_no) and not re.search(r"(\d)(-?\1){3,}", credit_card_no):
+        return "Valid"
+    else:
+        return "Invalid"
+
+
+n = int(input()) 
+for _ in range(n):
+    credit_card_number = input()  
+    print(is_valid_credit_card_no(credit_card_number)) 
+```
