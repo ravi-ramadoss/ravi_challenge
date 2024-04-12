@@ -4,7 +4,7 @@
 
 # System Architecture 
 
-![Architecture](images/comcast%20take%20home%20assignment.svg)
+![Architecture](images/comcast%20take%20home%20assignment.png)
 
 ## Overview
 
