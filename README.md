@@ -2,7 +2,9 @@
 [http://comcast.raviramadoss.me](http://comcast.raviramadoss.me) will redirect to https
 [https://comcast.raviramadoss.me](https://comcast.raviramadoss.me)
 
-# System Architecture README
+# System Architecture 
+
+![Architecture](images/comcast%20take%20home%20assignment.svg)
 
 ## Overview
 
@@ -17,9 +19,7 @@ This document describes the architecture of a distributed web application system
 ### VPC and Networking
 
 - **VPC (Virtual Private Cloud)**: Establishes a private network for deploying AWS resources. It's segmented into two subnets:
-  - **Subnet 1**: Reserved for specific resources, possibly public-facing services.
-  - **Subnet 2**: Reserved for different resources, possibly for internal services or a different availability zone for high availability.
-
+  - **Subnet 1, Subnet 2**: Reserved for load balancer, possibly public-facing services.different availability zone for high availability.
 ### Load Balancing and Content Distribution
 
 - **Application Load Balancer (ALB)**: Distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones, which increases the fault tolerance of the application.
@@ -46,17 +46,14 @@ This document describes the architecture of a distributed web application system
 
 - **AWS Certificate Manager**: Handles SSL/TLS certificates for secure traffic.
 
-### Database
-
-- **RDS (Relational Database Service)**: Provides resizable capacity for a cloud-based relational database and manages common database administration tasks.
 
 ## Traffic Flow
 
 1. User requests are directed to Route 53.
 2. Route 53 routes the traffic to the Application Load Balancer based on DNS records.
 3. The ALB distributes the traffic across the EC2 instances in the Auto Scaling Groups, utilizing the Security Groups' rules.
-4. The EC2 instances process the requests and interact with RDS for data storage and retrieval.
-5. AWS Certificate Manager ensures secure traffic between clients and the application.
+4. The EC2 instances process the requests a
+5. AWS Certificate Manager ensures secure traffic between clients and the application has valid certificate.
 
 ## Automation and Management
 
@@ -64,7 +61,7 @@ This document describes the architecture of a distributed web application system
 
 ## High Availability and Fault Tolerance
 
-- The use of multiple Availability Zones for EC2 instances and RDS ensures high availability and fault tolerance of the application.
+- The use of multiple Availability Zones for EC2 instances  ensures high availability and fault tolerance of the application.
 - Auto Scaling Groups ensure that the application can handle the load by adjusting the number of instances automatically.
 
 ## Security
