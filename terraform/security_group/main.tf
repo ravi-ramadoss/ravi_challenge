@@ -22,14 +22,14 @@ resource "aws_security_group" "lb_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["192.0.2.0/24"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
   tags = var.common_tags
 }
 
 #ec2 security group to allow ssh, http and https
 resource "aws_security_group" "ec2_sg" {
-  name        = "allow_ssh"
+  name        = "allow inbound access to ec2 servers"
   description = "Allow inbound SSH traffic"
   vpc_id      = var.vpc_id
 
@@ -62,6 +62,7 @@ resource "aws_security_group" "ec2_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
 
   tags = var.common_tags
 }

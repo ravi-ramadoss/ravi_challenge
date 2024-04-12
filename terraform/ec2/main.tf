@@ -22,7 +22,7 @@ resource "aws_launch_configuration" "green" {
   lifecycle {
     create_before_destroy = true
   }
-  security_groups = [var.ec2_security_group_id]
+  security_groups = [var.ec2_security_group_id, var.lb_security_group_id]
 }
 
 resource "aws_autoscaling_group" "blue" {

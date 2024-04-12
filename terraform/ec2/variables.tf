@@ -38,3 +38,8 @@ variable ec2_security_group_id {
   description = "The ID of the security group"
   type        = string
 }
+
+variable lb_security_group_id {
+  description = "The ID of the security group"
+  type        = string
+}

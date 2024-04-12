@@ -31,7 +31,7 @@ module "load_balancer" {
   vpc_id = module.vpc.vpc_id
   subnet_1_id = module.vpc.subnet_1_id
   subnet_2_id = module.vpc.subnet_2_id
-  security_group_id = module.security_group.security_group_id
+  security_group_id = module.security_group.lb_security_group_id
   certificate_arn = module.certificate.certificate_arn
   use_blue = var.use_blue
   common_tags = var.common_tags
@@ -48,6 +48,7 @@ module "ec2" {
   subnet_1_id = module.vpc.subnet_1_id 
   subnet_2_id = module.vpc.subnet_2_id
   ec2_security_group_id = module.security_group.ec2_security_group_id
+  lb_security_group_id = module.security_group.lb_security_group_id
 }
 
 module "security_group" {
